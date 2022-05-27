@@ -2,6 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  background-color: #f2f2fb;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -13,4 +14,25 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  height: 38px;
+  background: transparent;
+  padding: 0 2rem;
+  font-size: inherit;
+  border-radius: 18px;
+}
+
+form {
+  border: 1px solid;
+    margin: auto;
+    width: 30rem;
+    padding: 2rem;
+    border-radius: 18px;
+    position: fixed;
+    top: 30%;
+    left: 35%;
+    background-color: white;
 }
