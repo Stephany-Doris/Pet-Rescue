@@ -1,11 +1,11 @@
 .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto auto;
   padding: 1rem 8rem;
   background-color: aquamarine;
   width: 100vw;
   height: 6rem;
+  justify-content: center;
 }
 
 .main {
@@ -112,6 +112,7 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 300px;
+  position: relative;
 }
 
 .card:hover,
@@ -143,4 +144,37 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.signedInText,
+.notSignedInText {
+  position: absolute;
+  padding-top: 0.8rem;
+  left: 1rem;
+  right: 6.5rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+  z-index: 1;
+  line-height: 1.3rem;
+}
+
+.signedInText {
+  padding-top: 0rem;
+  left: 4.6rem;
+}
+
+.avatar {
+  border-radius: 2rem;
+  float: left;
+  height: 2.8rem;
+  width: 2.8rem;
+  background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.signedInStatus {
+  display: inline-flex;
 }

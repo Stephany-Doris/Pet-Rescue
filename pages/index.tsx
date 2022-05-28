@@ -19,21 +19,32 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Pet Rescue!</a>
         </h1>
-
+        <Link href="/server">
+          <a
+            style={{
+              fontSize: "18px",
+              textDecoration: "underline",
+              color: "blue",
+            }}
+          >
+            Server Side Rendering
+          </a>
+        </Link>
         <div className={styles.grid}>
-          {PetData.pets?.map(({ url, id }: Record<string, any>, index: any) => (
+          {PetData.pets?.map(({ url, id }: Record<string, any>) => (
             <Fragment key={id}>
-              <Link
-                key={id}
-                href={`/${encodeURIComponent(id)}`}
-                passHref
-              >
+              <Link key={id} href={`/${encodeURIComponent(id)}`} passHref>
                 <div className={styles.card}>
                   <Image
                     src={url}
                     alt="Picture of the author"
                     width={500}
                     height={500}
+                    objectFit="cover"
+                    // layout="responsive"
+                    // quality={20}
+                    // placeholder="blur"
+                    // blurDataURL={url}
                   />
                   <p>About Next.js.</p>
                 </div>
@@ -41,7 +52,7 @@ const Home: NextPage = () => {
             </Fragment>
           ))}
         </div>
-        </PageLayout>
+      </PageLayout>
 
       <footer className={styles.footer}>
         <a

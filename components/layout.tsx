@@ -2,20 +2,57 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 import styles from "../styles/Home.module.css";
+import { useSession, signIn, signOut } from "next-auth/react";
 
-const PageLayout = ({ children, session }: any) => {
+const PageLayout = ({ children }: any) => {
+  const { data: session } = useSession();
+  console.log({ session });
+
   return (
     <Fragment>
       <nav className={styles.nav}>
-        <Image alt="icon" src="/pet-icon2.svg" width={65} height={50} />
-        {session ? (
-          <div className={styles.btnWrapper}>
-            <button className={styles.loginBtn}>Log in</button>
-            <Link href="/api/auth/signin">
-              <button className={styles.signupBtn}>Sign up</button>
-            </Link>
-          </div>
-        ) : null}
+        <div
+          className={styles.signedInStatus}
+          style={{ display: "inline-flex" }}
+        >
+          {session?.user ? (
+            <>
+              {session.user.image && (
+                <span
+                  style={{ backgroundImage: `url('${session.user.image}')` }}
+                  className={styles.avatar}
+                />
+              )}
+              <span className={styles.signedInText}>
+                <small style={{ marginRight: "12px"}}>Signed in as</small>
+                <br />
+                <strong>{session.user.email ?? session.user.name}</strong>
+              </span>
+              <Link
+                href={`/api/auth/signout`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  signOut();
+                }}
+              >
+                <button className={styles.signupBtn}>Sign out</button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <p>Not signed in </p>
+              <button
+                style={{
+                  marginTop: "8px",
+                  marginLeft: "20px",
+                }}
+                onClick={() => signIn()}
+              >
+                Sign in
+              </button>
+            </>
+          )}
+        </div>
       </nav>
       <main className={styles.main}>{children}</main>
     </Fragment>
