@@ -7,9 +7,8 @@ const clientPage = ({ data: pageProps }: any) => {
 export default clientPage;
 
 export async function getStaticProps() {
-  // Fetch data from external API
-  const res = await fetch("/api/hello");
-  const data = await res.json();
+    const res = await fetch(`https://random-data-api.com/api/users/random_user`);
+    const data = await res.json();
 
   // Pass data to the page via props
   return { props: { data } };
