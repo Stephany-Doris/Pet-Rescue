@@ -28,7 +28,7 @@ const Home: NextPage = () => {
                 href={`/${encodeURIComponent(id)}`}
                 passHref
               >
-                <a href="https://nextjs.org/docs" className={styles.card}>
+                <div className={styles.card}>
                   <Image
                     src={url}
                     alt="Picture of the author"
@@ -36,7 +36,7 @@ const Home: NextPage = () => {
                     height={500}
                   />
                   <p>About Next.js.</p>
-                </a>
+                </div>
               </Link>
             </Fragment>
           ))}

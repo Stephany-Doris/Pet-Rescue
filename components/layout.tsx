@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Fragment } from "react";
 import styles from "../styles/Home.module.css";
 
@@ -10,9 +11,9 @@ const PageLayout = ({ children, session }: any) => {
         {session ? (
           <div className={styles.btnWrapper}>
             <button className={styles.loginBtn}>Log in</button>
-            <a href="/api/auth/signin">
+            <Link href="/api/auth/signin">
               <button className={styles.signupBtn}>Sign up</button>
-            </a>
+            </Link>
           </div>
         ) : null}
       </nav>
