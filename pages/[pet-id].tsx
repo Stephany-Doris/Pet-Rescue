@@ -1,18 +1,10 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import PageLayout from "../components/layout";
-import styles from "../styles/Home.module.css";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import PetData from "./pets.json";
 
 const Pet = () => {
   const { data: session } = useSession();
-  const router = useRouter();
-  const data: Record<string, any> = router.query;
-  const { url: imgUrl } =
-    PetData?.pets?.find(({ id }) => id === data?.pet - id) || {};
-  console.log({ session, router, imgUrl });
 
   return (
     <PageLayout>
@@ -31,7 +23,7 @@ const Pet = () => {
         <>
           <h1>Access Denied</h1>
           <p>
-            <a href="/api/auth/signin">
+            <Link href="/api/auth/signin">
               <button
                 onClick={(e) => {
                   e.preventDefault();
@@ -40,7 +32,7 @@ const Pet = () => {
               >
                 You must be signed in to view this page
               </button>
-            </a>
+            </Link>
           </p>
         </>
       )}
