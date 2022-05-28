@@ -30,6 +30,17 @@ const Home: NextPage = () => {
             Server Side Rendering
           </a>
         </Link>
+        <Link href="/client">
+          <a
+            style={{
+              fontSize: "18px",
+              textDecoration: "underline",
+              color: "blue",
+            }}
+          >
+            Static site generation
+          </a>
+        </Link>
         <div className={styles.grid}>
           {PetData.pets?.map(({ url, id }: Record<string, any>) => (
             <Fragment key={id}>
